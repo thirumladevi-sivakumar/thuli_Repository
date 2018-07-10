@@ -1,0 +1,2 @@
+module BrandlistsHelper
+end

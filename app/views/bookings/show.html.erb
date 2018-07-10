@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Customerid:</b>
+  <%= @booking.customerId %>
+</p>
+
+<p>
+  <b>Vendorid:</b>
+  <%= @booking.vendorId %>
+</p>
+
+<p>
+  <b>Bookingtime:</b>
+  <%= @booking.bookingTime %>
+</p>
+
+<p>
+  <b>Otp:</b>
+  <%= @booking.otp %>
+</p>
+
+<p>
+  <b>Brandname:</b>
+  <%= @booking.brandName %>
+</p>
+
+<p>
+  <b>Brandid:</b>
+  <%= @booking.brandId %>
+</p>
+
+<p>
+  <b>Price:</b>
+  <%= @booking.price %>
+</p>
+
+
+<%= link_to 'Edit', edit_booking_path(@booking) %> |
+<%= link_to 'Back', bookings_path %>

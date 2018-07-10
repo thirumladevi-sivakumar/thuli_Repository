@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  customerId: 1
+  vendorId: 1
+  bookingTime: 2018-07-09 18:57:58
+  otp: 1
+  brandName: MyString
+  brandId: 1
+  price: 1
+
+two:
+  customerId: 1
+  vendorId: 1
+  bookingTime: 2018-07-09 18:57:58
+  otp: 1
+  brandName: MyString
+  brandId: 1
+  price: 1

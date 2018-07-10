@@ -1,0 +1,27 @@
+<h1>Listing vendors_wards</h1>
+
+<table>
+  <tr>
+    <th>Vendor</th>
+    <th>Ward</th>
+    <th>Numberoforders</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @vendors_wards.each do |vendors_ward| %>
+  <tr>
+    <td><%= vendors_ward.vendor_id %></td>
+    <td><%= vendors_ward.ward %></td>
+    <td><%= vendors_ward.numberOfOrders %></td>
+    <td><%= link_to 'Show', vendors_ward %></td>
+    <td><%= link_to 'Edit', edit_vendors_ward_path(vendors_ward) %></td>
+    <td><%= link_to 'Destroy', vendors_ward, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Vendors ward', new_vendors_ward_path %>

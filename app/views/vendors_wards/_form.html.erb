@@ -1,0 +1,29 @@
+<%= form_for(@vendors_ward) do |f| %>
+  <% if @vendors_ward.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@vendors_ward.errors.count, "error") %> prohibited this vendors_ward from being saved:</h2>
+
+      <ul>
+      <% @vendors_ward.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :vendor_id %><br />
+    <%= f.number_field :vendor_id %>
+  </div>
+  <div class="field">
+    <%= f.label :ward %><br />
+    <%= f.number_field :ward %>
+  </div>
+  <div class="field">
+    <%= f.label :numberOfOrders %><br />
+    <%= f.number_field :numberOfOrders %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
