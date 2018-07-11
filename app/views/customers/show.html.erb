@@ -17,7 +17,7 @@
 
 <p>
   <b>Zone:</b>
-  <%= @customer.ward %>
+  <%= @customer.zone %>
 </p>
 
 <p>
@@ -26,5 +26,4 @@
 </p>
 
 
-<%= link_to 'Edit', edit_customer_path(@customer) %> |
-<%= link_to 'Back', customers_path %>
+<%= link_to 'Back', action: 'index' %>

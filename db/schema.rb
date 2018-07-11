@@ -11,12 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20180709132758) do
+ActiveRecord::Schema.define(:version => 20180711111227) do
 
   create_table "bookings", :force => true do |t|
-    t.integer  "customerId"
-    t.integer  "vendorId"
-    t.datetime "bookingTime"
+    t.integer  "customer_id"
+    t.integer  "vendor_id"
     t.integer  "otp"
     t.string   "brandName"
     t.integer  "brandId"
@@ -25,30 +24,36 @@ ActiveRecord::Schema.define(:version => 20180709132758) do
     t.datetime "updated_at",  :null => false
   end
 
-  create_table "brandlists", :force => true do |t|
-    t.string   "brandName"
-    t.integer  "quantity"
-    t.integer  "Price"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "customers", :force => true do |t|
     t.string   "name"
     t.string   "password"
     t.text     "address"
-    t.integer  "ward"
+    t.integer  "zone"
     t.string   "email"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
-  create_table "vendors_wards", :force => true do |t|
+  create_table "vendors", :force => true do |t|
+    t.string   "name"
+    t.string   "password"
+    t.string   "address"
+    t.boolean  "vend_type"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "vendors_zones", :force => true do |t|
     t.integer  "vendor_id"
-    t.integer  "ward"
-    t.integer  "numberOfOrders"
+    t.integer  "zone_id"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+    t.integer  "numberOfOrders"
+  end
+
+  create_table "zones", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
 end

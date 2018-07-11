@@ -12,13 +12,15 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :brandName %><br />
+    <%= f.label :BrandName, 'Brand Name' %><br>  
     <%= f.select(:brandName,Booking::BRANDS) %>
   </div>
+  <br>
   <div class="field">
-    <%= f.label :Quantity %><br />
+    <%= f.label :numberoforders, 'Number of cartons / Number of tanks' %><br>  
     <%= f.number_field :price %>
   </div>
+  <br>
   <div class="actions">
     <%= f.submit %>
   </div>

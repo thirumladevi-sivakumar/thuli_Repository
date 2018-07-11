@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Thuli::Application.load_tasks
+Thuli11::Application.load_tasks

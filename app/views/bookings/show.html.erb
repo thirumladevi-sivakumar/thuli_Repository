@@ -1,18 +1,9 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Customerid:</b>
-  <%= @booking.customerId %>
-</p>
-
-<p>
-  <b>Vendorid:</b>
-  <%= @booking.vendorId %>
-</p>
 
 <p>
   <b>Bookingtime:</b>
-  <%= @booking.bookingTime %>
+  <%= @booking.created_at %>
 </p>
 
 <p>
@@ -21,13 +12,8 @@
 </p>
 
 <p>
-  <b>Brandname:</b>
+  <b>Brand chosen:</b>
   <%= @booking.brandName %>
-</p>
-
-<p>
-  <b>Brandid:</b>
-  <%= @booking.brandId %>
 </p>
 
 <p>
@@ -36,5 +22,3 @@
 </p>
 
 
-<%= link_to 'Edit', edit_booking_path(@booking) %> |
-<%= link_to 'Back', bookings_path %>

@@ -1,0 +1,10 @@
+<h1>Vendor login</h1>
+
+<%= form_tag "/vendors/login_check", method: 'POST' %> 
+  <%= label_tag(:name, "Username") %>
+  <%= text_field_tag(:name) %> 
+  <br><br>
+  <%= label_tag(:password, "Password") %>
+  <%= text_field_tag(:password) %> 
+<br><br>
+<%= submit_tag("Login") %>

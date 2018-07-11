@@ -1,18 +1,28 @@
-Thuli::Application.routes.draw do
-  resources :bookings
+Thuli11::Application.routes.draw do
+  get "bookings/new"
 
-
-  resources :vendors_wards
-
-
-  resources :brandlists
-  resources :customers 
-  resources :bookings
-      
+  get "customers/index"
   root :to => "customers#index"
-  post 'customers/findId'
-  #get 'bookings/index'
 
+  post 'customers/findId'
+  get 'customers/new' => 'customers#new'
+  get '/customers' => 'customers#index'
+  post '/customers' => 'customers#create'
+  get '/customers/:id' => 'customers#show'
+
+
+  get 'bookings/new' => 'bookings#new'
+  get '/bookings/:id' => 'bookings#show'
+  post '/bookings' => 'bookings#create'
+
+
+  get 'vendors' => 'vendors#login'
+  get 'vendors/login'
+  post 'vendors/login_check' => 'vendors#login_check'
+  get 'vendors/new_booking1' => 'vendors#new_booking'
+  get 'vendors/accept'
+  get 'vendors/decline' 
+  get 'vendors/submit_otp'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

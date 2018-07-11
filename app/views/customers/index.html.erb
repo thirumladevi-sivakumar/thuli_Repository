@@ -6,28 +6,10 @@
   <%= text_field_tag(:username) %> 
   <br><br>
   <%= label_tag(:password, "Password") %>
-  <%= text_field_tag(:password) %> 
+  <%= password_field_tag(:password) %> 
 <br><br>
 
 <%= submit_tag("Login") %>
 
-<% @customers.each do |customer| %>
- <br><br>
-  <tr>
-    <td><%= customer.name %></td>
-    <td><%= customer.password %></td>
-    <td><%= customer.address %></td>
-    <td><%= customer.ward %></td>
-    <td><%= customer.email %></td>
-    <td><%= link_to 'Show', customer %></td>
-    <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
-    <td><%= link_to 'Destroy', customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<br>
-<% end %>
-</table>
-
-<br />
-
-<br>
-<%= link_to 'Register', new_customer_path %>
+<br> <br>
+<%= link_to 'Register', action: 'new' %>

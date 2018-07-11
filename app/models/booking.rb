@@ -1,5 +1,5 @@
 class Booking < ActiveRecord::Base
-  attr_accessible :bookingTime, :brandId, :brandName, :customerId, :otp, :price, :vendorId
-    belongs_to:customer
-    BRANDS=["Bisleri","Kenley","TATA","Vendor brand"]
+  attr_accessible :brandId, :brandName, :customer_id, :otp, :price, :vendor_id
+  belongs_to:customer
+  BRANDS=["Metro Water","Bisleri","Kenley","TATA","Vendor brand"]
 end

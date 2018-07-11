@@ -1,5 +1,4 @@
 class Customer < ActiveRecord::Base
-  attr_accessible :address, :email, :name, :password, :ward
-    has_many :bookings
-    
+  attr_accessible :address, :email, :name, :password, :zone
+  has_many :bookings
 end

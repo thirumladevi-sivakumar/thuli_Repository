@@ -1,0 +1,42 @@
+<p id="notice"><%= notice %></p>
+<h1>List of transactions belonging to current Vendor</h1>
+<%@transactions.each do |transaction|%>
+<%if transaction.cccepted == true%>
+<p>
+  <b>Name:</b>
+  <%= transaction.id %>
+</p>
+
+<p>
+  <b> Vendor name:</b>
+  <%= Vendor.find(transaction.vendor_id).name %>
+</p>
+
+<p>
+  <b>Customer id:</b>
+  <%= transaction.customer_id %>
+</p>
+
+<p>
+  <b>Brand id:</b>
+  <%= transaction.brand_id%>
+</p>
+<p>
+  <b>Price:</b>
+  <%= transaction.price%>
+</p>
+<p>
+  <b>Ordered at:</b>
+  <%= transaction.created_at%>
+</p>
+<p>
+  <b>OTP:</b>
+  <%= text_field_tag(:otp) %> 
+  <%= link_to 'Submit OTP', action: "submit_otp" ,id: transaction.id %>
+
+</p>
+<%end%>
+<%end%>
+<%= link_to 'New Bookings',  action: "new_booking" ,id: @vendor.id%> 
+
+<%= link_to 'Back', vendors_path %>
