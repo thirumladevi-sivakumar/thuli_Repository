@@ -14,11 +14,15 @@ class VendorsController < ApplicationController
   # GET /vendors/1.json
   def show
     @vendor = Vendor.find(params[:id])
-    @transactions = @vendor.transactions
-
+    @transactions = []
+    @vendor.bookings.each do |temp|
+      if temp.accepted == true
+        @transactions.push(temp)
+      end
+    end
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @vendor }
+      format.json { render json: @transactions }
     end
   end
 
@@ -40,19 +44,19 @@ class VendorsController < ApplicationController
 
   # POST /vendors
   # POST /vendors.json
-  def create
-    @vendor = Vendor.new(params[:vendor])
+  #def create
+   # @vendor = Vendor.new(params[:vendor])
 
-    respond_to do |format|
-      if @vendor.save
-        format.html { redirect_to @vendor, notice: 'Vendor was successfully created.' }
-        format.json { render json: @vendor, status: :created, location: @vendor }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @vendor.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+    #respond_to do |format|
+     # if @vendor.save
+      #  format.html { redirect_to @vendor, notice: 'Vendor was successfully created.' }
+       # format.json { render json: @vendor, status: :created, location: @vendor }
+      #else
+       # format.html { render action: "new" }
+        #format.json { render json: @vendor.errors, status: :unprocessable_entity }
+      #end
+    #end
+  #end
 
   # PUT /vendors/1
   # PUT /vendors/1.json
@@ -72,15 +76,15 @@ class VendorsController < ApplicationController
 
   # DELETE /vendors/1
   # DELETE /vendors/1.json
-  def destroy
-    @vendor = Vendor.find(params[:id])
-    @vendor.destroy
+  #def destroy
+   # @vendor = Vendor.find(params[:id])
+    #@vendor.destroy
 
-    respond_to do |format|
-      format.html { redirect_to vendors_url }
-      format.json { head :no_content }
-    end
-  end
+    #respond_to do |format|
+     # format.html { redirect_to vendors_url }
+      #format.json { head :no_content }
+  #  end
+ # end
 
   def login
     @vendor = Vendor.new
@@ -97,29 +101,58 @@ class VendorsController < ApplicationController
 
   def new_booking
     @vendor = Vendor.find(params[:id])
-    @transactions = @vendor.transactions
+    @transactions = @vendor.bookings
     respond_to do |format|
       format.html
       format.json { render json: @transactions}
     end
   end
+  def finish_transaction
+    @booking = Booking.find(params[:id])
+  end
 
   def accept
      @transaction = Booking.find(params[:id])
-     @transaction.cccepted = true
+     @transaction.accepted = true
      @transaction.save
   end
 
   def decline
-
+    transaction_to_change = Booking.find(params[:id])
+    vendor_who_cancel = Vendor.find(params[:vendor_id])
+    @vendors_two=VendorsZones.where(zone_id: Customer.find(transaction_to_change.customer_id).zone ).order('numberOfOrders ASC').first(2)
+    vendor_zone = (vendor_who_cancel.id == @vendors_two[0].vendor_id ? @vendors_two[1] : @vendors_two[0])
+    vendor_zone.numberOfOrders = vendor_zone.numberOfOrders.to_i + 1 
+    vendor_zone.save
+    vendor_cancel_zone = VendorsZones.find(vendor_who_cancel.id)
+    vendor_cancel_zone.numberOfOrders = vendor_cancel_zone.numberOfOrders.to_i - 1
+    vendor_cancel_zone.save
+    transaction_to_change.vendor_id = Vendor.find(vendor_zone.vendor_id).id
+    transaction_to_change.save
 
   end
 
+  def registration
+
+  end
+
+  def create
+    @vendor = Vendor.create()
+    @vendor.name = params[:name]
+    @vendor.password = params[:password]
+    @vendor.address = params[:address]
+    @vendor.vend_type = params[:vend_type]
+    @vendor.save
+    params[:location].each do |loc|
+      VendorsZones.create(vendor_id: @vendor.id, zone_id: Zone.find(|temp| temp.name == loc))
+    end
+  end
+
   def submit_otp
-    new_otp = params[:otp]
-    transaction = Booking.find(params[:id])
-    if(transaction.otp == new_otp)
-      Booking.find(params[:id]).destroy
+    @new_otp = params[:otp]
+    @transaction = Booking.find(params[:booking_id])
+    if @transaction.otp == @new_otp.to_i
+      @transaction.destroy #Booking.find(@transaction.id).destroy , Booking.destroy(@transaction.id)
     end 
     redirect_to :back
   end

@@ -33,11 +33,13 @@ class BookingsController < ApplicationController
       
       @customer=Customer.find($customerId)
       @vendors=VendorsZones.where(zone_id: @customer.zone).order('numberOfOrders ASC').first
+      #########################################################################################
       @vendors.numberOfOrders=@vendors.numberOfOrders+1
       @vendors.update_attribute(:numberOfOrders, @vendors.numberOfOrders)
       @booking.vendor_id=@vendors.vendor_id
    
       @booking.otp=rand.to_s[2..6]
+      @booking.accepted = false
     
       case @booking.brandName
           when "Metro Water"

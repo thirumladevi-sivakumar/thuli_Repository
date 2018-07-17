@@ -1,0 +1,76 @@
+<h1>Registration </h1>
+<%= form_tag "/vendors/create", method: 'POST' %> 
+  <%= label_tag(:name, "Username") %>
+  <%= text_field_tag(:name) %> 
+  </br></br>
+  <%= label_tag(:password, "Password") %>
+  <%= password_field_tag(:password) %> 
+</br></br>
+ <%= label_tag(:address, "Address") %>
+  <%= text_field_tag(:address) %> 
+</br></br>
+<%= label_tag(:vend_type, "Vendor type") %>
+  <%= check_box_tag 'vend_type'%> 
+</br></br>
+<%=label_tag(:vend_type, "Locations :-") %>
+  	<table>
+  	<tr> 
+  		<td><%= label_tag(:vend_type, "Thiruvottiyur :")%></td>
+  		<td><%=check_box_tag 'locations[]', 'thiruvottiyur'%></td>
+  	</tr>
+  	<tr>
+  		<td><%= label_tag(:vend_type, "Manali :")%></td>
+  		<td><%=check_box_tag 'locations[]', 'manali'%></td>
+  	</tr>
+  	<tr>
+  		<td><%= label_tag(:vend_type, "Madhavaram:")%></td>
+  		<td><%=check_box_tag 'locations[]', 'madhavaram'%></td>
+  	</tr>
+  <tr> 
+  		<td><%= label_tag(:vend_type, "Tondiarpet:")%></td>
+  		<td><%=check_box_tag 'locations[]', 'tondiarpet'%></td>
+  	</tr>
+  	<tr>
+  		<td><%= label_tag(:vend_type, "Royapuram:")%></td>
+  		<td><%=check_box_tag 'locations[]', 'royapuram'%></td>
+  	</tr>
+  	<tr>
+  		<td><%= label_tag(:vend_type, "Thiru. Vi. Ka. Nagar :")%></td>
+  		<td><%=check_box_tag 'locations[]', 'thiru'%></td>
+  	</tr>
+  	<tr>
+  		<td><%= label_tag(:vend_type, "Ambattur :")%></td>
+  		<td><%=check_box_tag 'locations[]', 'ambattur'%></td>
+  	</tr>
+  	<li> 
+  		<td><%= label_tag(:vend_type, "Anna Nagar :")%></td>
+  		<td><%=check_box_tag 'locations[]', 'anna_nagar'%></td>
+  	</tr>
+  	<tr>
+  		<td><%= label_tag(:vend_type, "Teynampet :")%></td>
+  		<td><%=check_box_tag 'locations[]', 'teynampet'%></td>
+  	</tr>
+  	<tr>
+  		<td><%= label_tag(:vend_type, "Kodambakkam :")%></td>
+  		<td><%=check_box_tag 'locations[]', 'kodambakkam'%></td>
+  	</tr>
+  	<li> 
+  		<td><%= label_tag(:vend_type, "Valasaravakkam :")%></td>
+  		<td><%=check_box_tag 'locations[]', 'valasaravakkam'%></td>
+  	</tr>
+  	<tr>
+  		<td><%= label_tag(:vend_type, "Alandur :")%></td>
+  		<td><%=check_box_tag 'locations[]', 'alandur'%></td>
+  	</tr>
+  	<tr> 
+  		<td><%= label_tag(:vend_type, "	Adyar :")%></td>
+  		<td><%=check_box_tag 'locations[]', 'adyar'%></td>
+  	</tr>
+  	<tr>
+  		<td><%= label_tag(:vend_type, "Perungudi :")%></td>
+  		<td><%=check_box_tag 'locations[]', 'perungudi'%></td>
+  	</tr>
+  </table>
+  
+</br></br>
+<%= submit_tag("Login") %>

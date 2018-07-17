@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 <h1>List of transactions belonging to current Vendor</h1>
 <%@transactions.each do |transaction|%>
-<%if transaction.cccepted == true%>
+
 <p>
   <b>Name:</b>
   <%= transaction.id %>
@@ -19,7 +19,7 @@
 
 <p>
   <b>Brand id:</b>
-  <%= transaction.brand_id%>
+  <%= transaction.brandId%>
 </p>
 <p>
   <b>Price:</b>
@@ -30,12 +30,11 @@
   <%= transaction.created_at%>
 </p>
 <p>
-  <b>OTP:</b>
-  <%= text_field_tag(:otp) %> 
-  <%= link_to 'Submit OTP', action: "submit_otp" ,id: transaction.id %>
-
+  
+  <%= link_to 'Finish booking', action: "finish_transaction" ,id: transaction.id %>
+  <%= link_to 'Cancel', action: "decline" ,id: transaction.id ,vendor_id: transaction.vendor_id %>
 </p>
-<%end%>
+
 <%end%>
 <%= link_to 'New Bookings',  action: "new_booking" ,id: @vendor.id%> 
 
