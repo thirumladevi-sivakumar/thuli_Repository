@@ -1,0 +1,28 @@
+
+<nav class="navbar navbar-inverse navbar-static-top" style="border:solid 3px rgb(0, 163, 227);">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <% link_to 'thuli', root_path, class: "navbar-brand" %>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav">
+            <% link_to 'index', root_path %>
+            <li><a href="#carousel"></a></li>
+            <li><a href="/vendors/new_booking1">Available bookings</a></li>
+            <li><a href="#founder/show">Accepted Bookings</a></li>
+            <li><a href="#founder_sandeep">Sandeep</a></li>
+
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/vendors/login"> <i class="fas fa-sign-in-alt"> </i> Logout</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
