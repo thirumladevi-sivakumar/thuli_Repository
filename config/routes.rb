@@ -2,7 +2,7 @@ Thuli11::Application.routes.draw do
   get "bookings/new"
 
   get "customers/index"
-  root :to => "customers#index"
+  root :to => "home#index"
 
   post 'customers/findId'
   get 'customers/new' => 'customers#new'

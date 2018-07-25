@@ -142,9 +142,10 @@ class VendorsController < ApplicationController
     @vendor.password = params[:password]
     @vendor.address = params[:address]
     @vendor.vend_type = params[:vend_type]
-    @vendor.save
-    params[:locations].each do |loc|
-      VendorsZones.create(vendor_id: @vendor.id, zone_id: Zone.find_by_name(loc).id, numberOfOrders: 0)
+     if @vendor.save
+      params[:locations].each do |loc|
+        VendorsZones.create(vendor_id: @vendor.id, zone_id: Zone.find_by_name(loc).id, numberOfOrders: 0)
+      end
     end
   end
 

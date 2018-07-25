@@ -1,27 +1,27 @@
+<%= render 'nav_vendors' %>
 <h1>Available bookings</h1>
+<div class="trip-listing">
 <% @transactions.each do |transaction|%>
 <%if transaction.accepted == nil or transaction.accepted == false%>
 <p>
-  <b>Customer id:</b>
+  <h3>Customer id:</h3>
   <%= transaction.customer_id %>
-</p>
 
-<p>
-  <b>Brand id:</b>
+
+
+  <p>Brand id:</p>
   <%= transaction.brandId%>
-</p>
-<p>
-  <b>Price:</b>
+
+
+  <p>Price:</p>
   <%= transaction.price%>
-</p>
-<p>
+
+
   <%= link_to 'Accept',  action: "accept", id: transaction.id %> 
   <%= link_to 'Decline',  action: "decline" %> 
  
 </p>
-
-
 <%end%>
-
 <%end%>
+</div>
 <%= link_to 'Show ongoing',  action: "show" , id: @vendor.id %> 
