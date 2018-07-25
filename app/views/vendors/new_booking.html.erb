@@ -1,6 +1,6 @@
 <h1>Available bookings</h1>
 <% @transactions.each do |transaction|%>
-<%if transaction.cccepted == nil or transaction.cccepted == false%>
+<%if transaction.accepted == nil or transaction.accepted == false%>
 <p>
   <b>Customer id:</b>
   <%= transaction.customer_id %>
@@ -8,18 +8,20 @@
 
 <p>
   <b>Brand id:</b>
-  <%= transaction.brand_id%>
+  <%= transaction.brandId%>
 </p>
 <p>
   <b>Price:</b>
-  <%= transaction.price*10%>
+  <%= transaction.price%>
 </p>
 <p>
   <%= link_to 'Accept',  action: "accept", id: transaction.id %> 
   <%= link_to 'Decline',  action: "decline" %> 
  
 </p>
-<%= link_to 'Show ongoing',  action: "show" , id: @vendor.id %> 
+
 
 <%end%>
+
 <%end%>
+<%= link_to 'Show ongoing',  action: "show" , id: @vendor.id %> 

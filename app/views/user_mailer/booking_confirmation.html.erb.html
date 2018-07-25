@@ -1,0 +1,24 @@
+<html>
+   
+   <head>
+      <meta content = 'text/html; charset = UTF-8' http-equiv = 'Content-Type' />
+   </head>
+   
+   <body>
+      
+      <p>
+         You have successfully booked up for : 
+         <%= @booking.brandName %> &nbsp; 
+      
+         with cost of booking : Rs.
+         <%= @booking.price %>.<br>
+      </p>
+      <p>
+         For successful delivery completion please provide otp :
+         <%= @booking.otp %>.
+      </p>
+      
+      <p>Thanks for booking and have a great day!</p>
+      
+   </body>
+</html>

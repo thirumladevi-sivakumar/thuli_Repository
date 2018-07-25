@@ -20,9 +20,15 @@ Thuli11::Application.routes.draw do
   get 'vendors/login'
   post 'vendors/login_check' => 'vendors#login_check'
   get 'vendors/new_booking1' => 'vendors#new_booking'
+  get 'vendors/finish_transaction'
   get 'vendors/accept'
   get 'vendors/decline' 
-  get 'vendors/submit_otp'
+  post 'vendors/submit_otp' => 'vendors#submit_otp'
+  get 'vendors/show'
+  get 'vendors/registration'
+  post 'vendors/create' =>'vendors#create'
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

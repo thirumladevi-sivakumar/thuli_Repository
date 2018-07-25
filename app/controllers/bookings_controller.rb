@@ -33,32 +33,24 @@ class BookingsController < ApplicationController
       
       @customer=Customer.find($customerId)
       @vendors=VendorsZones.where(zone_id: @customer.zone).order('numberOfOrders ASC').first
+      #########################################################################################
       @vendors.numberOfOrders=@vendors.numberOfOrders+1
       @vendors.update_attribute(:numberOfOrders, @vendors.numberOfOrders)
       @booking.vendor_id=@vendors.vendor_id
    
       @booking.otp=rand.to_s[2..6]
+      @booking.accepted = false
     
-      case @booking.brandName
-          when "Metro Water"
-            @booking.brandId=0
-            @booking.price=@booking.price*650
-          when "Bisleri"
-            @booking.brandId=1
-            @booking.price=@booking.price*200
-          when "Kenley"
-            @booking.brandId=2
-            @booking.price=@booking.price*208
-          when "TATA"
-            @booking.brandId=3
-            @booking.price=@booking.price*210
-          when "Vendor brand"
-            @booking.brandId=4
-            @booking.price=@booking.price*150
-      end
+      @booking.brandId=@booking.find_id(@booking.brandName)
+      x=@booking.price
+      @booking.price=@booking.find_price(@booking.brandName)*x
+      
+      
       
     respond_to do |format|
       if @booking.save
+        #console.log(UserMailer.a)
+       UserMailer.booking_confirmation(@customer.email,@booking).deliver
         format.html { redirect_to action:'show',id: @booking.id }
         format.json { render json: @booking, status: :created, location: @booking }
       else

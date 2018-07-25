@@ -1,0 +1,27 @@
+<h1>Finish Transaction</h1>
+<%=form_tag "/vendors/submit_otp" , method: 'POST'%>
+	<%= label_tag(:booking_id, "Booking ID :") %>
+	<%= text_field_tag(:booking_id, @booking.id) %>
+    </br></br>
+    <%= label_tag(:vendor_name, "Vendor name :") %>
+    <%= label_tag(:vendor_name,  Vendor.find(@booking.vendor_id).name)%>
+	</br></br>
+	<%= label_tag( :customer_name,"Customer name :") %>
+    <%= label_tag( :customer_name, Customer.find(@booking.customer_id).name)%>
+	</br></br>
+	<%= label_tag(:customer_id, "Customer id :") %>
+    <%= label_tag(:customer_id, @booking.customer_id)%>
+	</br></br>
+	<%= label_tag(:brand_id, "Brand id :") %>
+    <%= label_tag(:brand_id,  @booking.brandId)%>
+	</br></br>
+	<%= label_tag(:price, "Price : Rs.") %>
+    <%= label_tag( :price, @booking.price)%>
+	</br></br>
+	<%= label_tag(:otp, "OTP :") %>
+    <%= text_field_tag(:otp )%>
+</br></br>
+	<%= submit_tag("Submit") %>
+  
+   
+
