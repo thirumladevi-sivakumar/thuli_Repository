@@ -68,9 +68,9 @@ Thuli11::Application.configure do
     {
        address:              'smtp.gmail.com',
        port:                 587,
-       domain:               'gmail.com',
-       user_name:            'freshworksDemo123@gmail.com',
-       password:             'thuli123',
+       domain:               <email domain>,
+       user_name:            <email id from which email to be sent>,
+       password:             <email password>,
        authentication:       'plain',
        enable_starttls_auto: true  
     }
